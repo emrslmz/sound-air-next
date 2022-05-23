@@ -1,0 +1,40 @@
+{
+  "name": "sound-air-next",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite --port=8081",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.2",
+    "@tailwindcss/forms": "^0.4.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "api-core-service": "^1.0.6",
+    "dayjs": "^1.10.7",
+    "handy-notification": "^1.2.8",
+    "lodash.debounce": "^4.0.8",
+    "tailwindcss": "^3.0.12",
+    "v-calendar": "^3.0.0-alpha.6",
+    "vite": "^2.7.2",
+    "vite-plugin-html": "^2.1.2",
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.12",
+    "vue-select": "^4.0.0-beta.2",
+    "vue-tsc": "^0.29.8",
+    "vuex": "^4.0.2",
+    "vue-meta": "^3.0.0-alpha.9",
+    "@bugsnag/js": "^7.14.1",
+    "@bugsnag/plugin-vue": "^7.14.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.0.0",
+    "autoprefixer": "^10.4.2",
+    "color": "^4.2.0",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
+  }
+}
