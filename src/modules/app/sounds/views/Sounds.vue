@@ -11,12 +11,19 @@
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> çalmaya başla!</span>
         </h1>
       </div>
+      {{ inThePlaylist }}
 
-      <div class="max-w-5xl mx-auto">
-        <section class="flex flex-wrap justify-center items-center">
-          <div class="flex justify-center" @click="toggleNowPlayingCard(!nowPlayingCard)">
-            <div class="flex justify-center p-4 bg-yellow-300 ring-2 ring-yellow-100 rounded-lg shadow-xl w-24 text-7xl text-white">
-              <i class="fa-solid fa-cube opacity-50 hover:opacity-100 cursor-pointer"></i>
+      <div class="max-w-2xl mx-auto">
+        <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+          <div class="flex justify-center m-5" v-for="(sound, index) in sounds" :key="index">
+            <div class="flex flex-col justify-center items-center p-4 bg-yellow-500 ring-2 ring-yellow-600 rounded-lg shadow-xl w-24 text-7xl text-white">
+              <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sounds.name" :class="sound.icon" :style="sounds.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
+<!--              @click="toggleNowPlayingCard(!nowPlayingCard)"-->
+              <span v-if="sound.showButton">
+                <input type="range" min="0" max="100" class="volumeSlider" @change="toggleVolumeButton(sound.id)" v-model="sound.volume">
+              </span>
+              <span v-else class="mt-10"></span>
+
             </div>
           </div>
         </section>
@@ -27,6 +34,7 @@
 </template>
 
 <script>
+import { mapState, mapActions} from 'vuex';
 import TheNowPlaying from '../../../../components/base/TheNowPlaying.vue';
 
 export default {
@@ -39,12 +47,58 @@ export default {
     };
   },
 
+  computed: {
+    ...mapState('Sounds', ['sounds', 'inThePlaylist']),
+  },
+
   methods: {
+    ...mapActions('Sounds', ['getAudios', 'playSettings', 'volumeSettings']),
+
     toggleNowPlayingCard(value) {
       this.nowPlayingCard = value;
+    },
+
+    async playAudioIcon(id) {
+      await this.playSettings(id);
+    },
+
+    async toggleVolumeButton(id) {
+      await this.volumeSettings(id);
     }
+  },
+
+  async created() {
+    this.getAudios();
   },
 
 };
 </script>
+
+<style scoped>
+.volumeSlider {
+  -webkit-appearance: none;
+  width: 75px;
+  height: 5px;
+  border-radius: 20px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.volumeSlider:hover {
+  opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+}
+</style>
 
