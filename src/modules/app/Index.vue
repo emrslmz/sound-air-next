@@ -1,8 +1,10 @@
 <template>
   <div>
     <div class="h-full">
-        <the-header />
-        <router-view />
+      <the-header />
+      <router-view />
+      <the-footer />
+
     </div>
   </div>
 </template>
@@ -10,10 +12,11 @@
 <script>
 // import config from '../../core/config';
 import TheHeader from '../../components/base/TheHeader.vue';
+import TheFooter from '../../components/base/TheFooter.vue';
 
 export default {
   name: 'AppIndex',
-  components: { TheHeader },
+  components: { TheHeader, TheFooter },
 
   methods: {
 

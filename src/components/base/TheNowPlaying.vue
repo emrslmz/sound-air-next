@@ -4,84 +4,109 @@
       <div class='flex w-10/12 bg-white shadow-2xl rounded-lg overflow-hidden mx-auto mb-5'>
         <div class="flex flex-col w-full">
           <div class="flex p-5 border-b">
-            <img class='w-20 h-20 object-cover' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
+            <span v-if="primaryItem">
+              <i class="flex justify-start items-center w-10 text-3xl rounded-lg opacity-75" :title="primaryItem.name" :class="primaryItem.icon"></i>
+            </span>
+            <span v-else>
+              <i class="fa-solid fa-ban flex justify-start items-center w-10 text-3xl rounded-lg opacity-75"></i>
+            </span>
+
+            <!--PLAYING-NOW-->
             <div class="flex flex-col px-2 w-full">
-                <div class="flex justify-between">
-                  <span class="text-xs text-gray-700 uppercase font-medium">
-                   Şu anda çalıyor
+              <div class="flex justify-between">
+                <span class="text-xs text-gray-700 uppercase font-medium">
+                  <span v-if="primaryItem">Şu anda çalıyor</span>
+                  <span v-else>Çalma durduruldu</span>
+                </span>
+                <span class="text-xs text-gray-700 uppercase font-medium cursor-pointer opacity-50 hover:opacity-100">
+                  <span v-if="cardStatus === 1" @click="toggleCardStatus(2)">
+                    <i class="fa-solid fa-chevron-up"></i>
                   </span>
-                  <span class="text-xs text-gray-700 uppercase font-medium cursor-pointer opacity-50 hover:opacity-100" @click="close()">
-                    <i class="fa-solid fa-chevron-down"></i>
+                  <span v-else-if="cardStatus === 2" @click="toggleCardStatus(1)">
+                   <i class="fa-solid fa-chevron-down"></i>
                   </span>
+                </span>
+              </div>
+              <span class="text-sm text-red-500 capitalize font-semibold pt-1">
+                  <span v-if="primaryItem">{{ primaryItem.name }}</span>
+                  <span v-else>Ses bulunmuyor</span>
+                </span>
+              <span class="text-xs text-gray-500 uppercase font-medium flex justify-between items-center">
+                <span v-if="primaryItem">-"{{ primaryItem.description }},"</span>
+                <span v-else>Ses bulunmuyor</span>
+                <span v-if="inThePlaylist && cardStatus === 1 && inThePlaylist.length > 1" class="px-2 py-1 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">{{ inThePlaylist.length - 1  }} tane daha</span>
+              </span>
+            </div>
+          </div>
+          <!--/PLAYING-NOW-->
+
+          <div class="flex flex-col w-full" v-if="cardStatus === 2">
+            <!--PLAY-PAUSE-->
+            <div class="flex flex-col sm:flex-row items-center p-5">
+              <div class="flex items-center">
+                <div class="flex space-x-3 p-2">
+                  <button class="focus:outline-none text-xs">
+                    <i class="fa-solid fa-thumbs-up text-red-200 hover:text-red-300"></i>
+                  </button>
+                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none">
+                    <span v-if="primaryItem" @click="playAudioIcon(primaryItem.id)"><i class="fa-solid fa-pause text-red-600"></i></span>
+                    <span v-else><i class="fa-solid fa-play text-red-600"></i></span>
+                  </button>
+                  <button class="focus:outline-none pt-1 text-xs">
+                    <i class="fa-solid fa-thumbs-down text-red-200 hover:text-red-300"></i>
+                  </button>
                 </div>
-                <span class="text-sm text-red-500 capitalize font-semibold pt-1">
-                  I think I need a sunrise, I'm tired of the sunset</span>
-                <span class="text-xs text-gray-500 uppercase font-medium ">
-                  -"Boston," Augustana
-                </span>
-            </div>
-          </div>
-
-          <div class="flex flex-col sm:flex-row items-center p-5">
-            <div class="flex items-center">
-              <div class="flex space-x-3 p-2">
-                <button class="focus:outline-none">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5"></line></svg>
-                </button>
-                <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none">
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                </button>
-                <button class="focus:outline-none">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19"></line></svg>
-                </button>
               </div>
-            </div>
-            <div class="relative w-full sm:w-1/2 md:w-7/12 lg:w-4/6 ml-2">
-              <div class="bg-red-300 h-2 w-full rounded-lg"></div>
-              <div class="bg-red-500 h-2 w-1/2 rounded-lg absolute top-0"></div>
+              <div class="relative w-full sm:w-1/2 md:w-7/12 lg:w-4/6 ml-2">
+                <div v-if="primaryItem">
+                  <input type="range" min="0" max="100" class="volumeSlider w-full bg-red-300" @change="toggleVolumeButton(primaryItem.id)" v-model="primaryItem.volume" />
+                </div>
+                <div v-else>
+                  <input type="range" min="0" max="100" v-model="defaultVolume" class="volumeSlider w-full bg-red-300"  />
+                </div>
 
-            </div>
-            <div class="flex justify-end w-full sm:w-auto pt-1 sm:pt-0">
+              </div>
+              <div class="flex justify-end w-full sm:w-auto pt-1 sm:pt-0">
                 <span class="text-xs text-gray-700 uppercase font-medium pl-2">
-                    40/100
-                </span>
-            </div>
-
-          </div>
-
-          <div class="flex flex-col p-5 h-64 overflow-auto">
-            <div class="border-b pb-1 flex justify-between items-center mb-2">
-              <span class=" text-base font-semibold uppercase text-gray-700"> Oynatma Listesi</span>
-              <img class="w-4 cursor-pointer" src="https://p.kindpng.com/picc/s/152-1529312_filter-ios-filter-icon-png-transparent-png.png" />
-            </div>
-
-            <div class="flex border-b py-3 cursor-pointer hover:shadow-md px-2 ">
-              <img class='w-10 h-10 object-cover rounded-lg' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-              <div class="flex flex-col px-2 w-full">
-
-                <span class="text-sm text-red-500 capitalize font-semibold pt-1">
-                I think I need a sunrise, I'm tired of the sunset
-                </span>
-                <span class="text-xs text-gray-500 uppercase font-medium ">
-                    -"Boston," Augustana
+                    <span v-if="primaryItem">{{ primaryItem.volume }}</span><span v-else>{{ defaultVolume }}</span>/100
                 </span>
               </div>
+
             </div>
+            <!--/PLAY-PAUSE-->
 
-            <div class="flex border-b py-3 cursor-pointer hover:shadow-md px-2 ">
-              <img class='w-10 h-10 object-cover rounded-lg' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-              <div class="flex flex-col px-2 w-full">
+            <!--PLAYLIST-->
+            <div class="flex flex-col p-5 max-h-56">
+              <div class="border-b pb-1 flex justify-between items-center mb-2">
+                <span class=" text-base font-semibold uppercase text-gray-700"> Oynatma Listesi</span>
+                <img class="w-4 cursor-pointer" src="https://p.kindpng.com/picc/s/152-1529312_filter-ios-filter-icon-png-transparent-png.png" />
+              </div>
 
-                <span class="text-sm text-red-500 capitalize font-semibold pt-1">
-                I think I need a sunrise, I'm tired of the sunset
-                </span>
-                <span class="text-xs text-gray-500 uppercase font-medium ">
-                    -"Boston," Augustana
-                </span>
+              <div class="overflow-auto" v-if="inThePlaylist.length > 0">
+
+                <div class="flex border-b py-3 cursor-pointer hover:shadow-md px-2" v-for="(sound, index) in inThePlaylist" :key="index" @click="setPrimary(sound.id)">
+                  <i class="flex justify-start items-center cursor-pointer w-10 text-3xl rounded-lg opacity-75" :title="sound.name" :class="sound.icon"></i>
+
+                  <div class="flex flex-col justify-start items-start px-2 w-full">
+                  <span class="text-sm text-red-500 capitalize font-semibold">
+                    {{ sound.name }}
+                  </span>
+                    <span class="text-xs text-gray-500 uppercase font-medium">
+                      -{{ sound.id }}
+                  </span>
+                  </div>
+                </div>
+
+              </div>
+              <div v-else>
+              <span class="text-xs text-center text-gray-500 uppercase font-medium">
+                Ses bulunmuyor
+              </span>
               </div>
             </div>
-
+            <!--/PLAYLIST-->
           </div>
+
         </div>
       </div>
     </div>
@@ -89,20 +114,93 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'Music',
   emits: ['close'],
   data() {
     return {
-
+      defaultVolume: 100,
+      cardStatus: 1, //1 = full, 2 = half
+      primaryItem: null,
     };
   },
 
+  computed: {
+    ...mapState('Sounds', ['inThePlaylist']),
+
+    inThePlaylistFirstItem() {
+      if (this.inThePlaylist[0]) {
+        return this.inThePlaylist[0];
+      }
+    },
+
+    inThePlaylistForPlaylistItems() {
+      if (this.inThePlaylist) {
+        return this.inThePlaylist.shift();
+      }
+    }
+
+  },
+
   methods: {
+    ...mapActions('Sounds', ['playSettings', 'volumeSettings']),
+
+    setPrimary(id) {
+      if (id) {
+        this.primaryItem = this.inThePlaylist.find(p => p.id === id);
+      } else {
+        this.primaryItem = this.inThePlaylistFirstItem;
+      }
+
+    },
+
+    async toggleVolumeButton(id) {
+      await this.volumeSettings(id);
+    },
+
+    async playAudioIcon(id) {
+      await this.playSettings(id);
+      this.primaryItem = this.inThePlaylistFirstItem;
+    },
+
     close() {
-      this.$emit('close');
+      // this.$emit('close');
+    },
+
+    toggleCardStatus(value) {
+      this.cardStatus = value;
     }
   },
 
 };
 </script>
+
+<style scoped>
+.volumeSlider {
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 20px;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  z-index: 10;
+}
+
+.volumeSlider:hover {
+  opacity: 1;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: red;
+  cursor: pointer;
+}
+</style>
+

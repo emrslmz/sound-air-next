@@ -1,8 +1,8 @@
 <template>
   <div class="mx-20 pb-20">
     <div class="relative">
-      <div class="fixed bottom-0 right-0 w-1/3">
-        <the-now-playing v-if="nowPlayingCard" @close="toggleNowPlayingCard(false)" />
+      <div class="fixed bottom-0 right-0 w-1/3 z-20">
+        <the-now-playing @close="toggleNowPlayingCard(false)" />
       </div>
 
       <div class="py-10">
@@ -11,13 +11,12 @@
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> çalmaya başla!</span>
         </h1>
       </div>
-      {{ inThePlaylist }}
 
       <div class="max-w-2xl mx-auto">
         <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
-          <div class="flex justify-center m-5" v-for="(sound, index) in sounds" :key="index">
-            <div class="flex flex-col justify-center items-center p-4 bg-yellow-500 ring-2 ring-yellow-600 rounded-lg shadow-xl w-24 text-7xl text-white">
-              <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sounds.name" :class="sound.icon" :style="sounds.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
+          <div class="flex justify-center mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
+            <div class="flex flex-col justify-start items-center p-4 bg-yellow-500 ring-2 ring-yellow-600 rounded-lg shadow-xl w-24 h-32 text-7xl text-white">
+              <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sound.name" :class="sound.icon" :style="sound.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
 <!--              @click="toggleNowPlayingCard(!nowPlayingCard)"-->
               <span v-if="sound.showButton">
                 <input type="range" min="0" max="100" class="volumeSlider" @change="toggleVolumeButton(sound.id)" v-model="sound.volume">
@@ -85,6 +84,7 @@ export default {
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  z-index: 10;
 }
 
 .volumeSlider:hover {
@@ -97,7 +97,7 @@ export default {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: white;
+  background: #818080;
   cursor: pointer;
 }
 </style>
