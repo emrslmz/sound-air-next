@@ -4,7 +4,6 @@
       <the-header />
       <router-view />
       <the-footer />
-
     </div>
   </div>
 </template>
