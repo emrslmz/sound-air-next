@@ -1,6 +1,10 @@
 {
   "name": "sound-air-next",
+  "description": "Sound-air Next!",
   "version": "0.0.0",
+  "engines": {
+    "node": "16.11.1"
+  },
   "scripts": {
     "dev": "vite --port=8081",
     "build": "vue-tsc --noEmit && vite build",
