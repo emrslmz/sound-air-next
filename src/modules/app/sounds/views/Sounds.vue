@@ -11,8 +11,7 @@
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> çalmaya başla!</span>
         </h1>
       </div>
-
-      <div class="max-w-2xl mx-auto">
+      <div v-if="sounds.length" class="max-w-2xl mx-auto">
         <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
           <div class="flex justify-center mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
             <div class="flex flex-col justify-start items-center p-4 bg-yellow-500 ring-2 ring-yellow-600 rounded-lg shadow-xl w-24 h-32 text-7xl text-white">
@@ -28,6 +27,32 @@
         </section>
       </div>
 
+      <div v-else class="pb-72">
+        <div class="w-1/2 mx-auto">
+          <div class="w-full shadow-2xl subpixel-antialiased rounded h-64 bg-black border-black mx-auto">
+            <div class="flex items-center h-6 rounded-t bg-gray-100 border-b border-gray-500 text-center text-black" id="headerTerminal">
+              <div class="flex ml-2 items-center text-center border-red-900 bg-red-500 shadow-inner rounded-full w-3 h-3" id="closebtn">
+              </div>
+              <div class="ml-2 border-yellow-900 bg-yellow-500 shadow-inner rounded-full w-3 h-3" id="minbtn">
+              </div>
+              <div class="ml-2 border-green-900 bg-green-500 shadow-inner rounded-full w-3 h-3" id="maxbtn">
+              </div>
+              <div class="mx-auto pr-16" id="terminaltitle">
+                <p class="text-center text-sm">Terminal</p>
+              </div>
+
+            </div>
+            <div class="pl-1 pt-1 h-auto  text-green-200 font-mono text-xs bg-black" id="console">
+              <p class="pb-1">When You Are: {{ new Date() }}</p>
+              <p class="pb-1">JavScripts: Sound-air emresolmaz$</p>
+              <p class="pl-32 pb-1">go to Website: <a target="_blank" href="https://emresolmaz.com.tr">emresolmaz.com.tr</a>$</p>
+              <p class="pt-12 pb-1">>sayfa yüklenirken bir hata meydana geldi$</p>
+              <p class="pb-1" @click="fetchSounds()">>yenilemek icin tikla$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -37,12 +62,13 @@ import { mapState, mapActions} from 'vuex';
 import TheNowPlaying from '../../../../components/base/TheNowPlaying.vue';
 
 export default {
-  name: 'Sounds',
+  name: 'SoundsPage',
   components: { TheNowPlaying },
 
   data() {
     return {
       nowPlayingCard: false,
+      errors: {},
     };
   },
 
@@ -63,11 +89,20 @@ export default {
 
     async toggleVolumeButton(id) {
       await this.volumeSettings(id);
-    }
+    },
+
+    async fetchSounds() {
+      try {
+        await this.getAudios();
+        this.errors = {};
+      } catch (e) {
+        this.errors = e;
+      }
+    },
   },
 
   async created() {
-    this.getAudios();
+    await this.fetchSounds();
   },
 
 };

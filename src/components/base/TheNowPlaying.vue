@@ -8,7 +8,7 @@
               <i class="flex justify-start items-center w-10 text-3xl rounded-lg opacity-75" :title="primaryItem.name" :class="primaryItem.icon"></i>
             </span>
             <span v-else>
-              <i class="fa-solid fa-ban flex justify-start items-center w-10 text-3xl rounded-lg opacity-75"></i>
+              <p class="flex justify-start items-center w-10 text-3xl rounded-lg opacity-75">😥</p>
             </span>
 
             <!--PLAYING-NOW-->
@@ -48,10 +48,12 @@
                   <button class="focus:outline-none text-xs">
                     <i class="fa-solid fa-thumbs-up text-red-200 hover:text-red-300"></i>
                   </button>
-                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none">
-                    <span v-if="primaryItem" @click="playAudioIcon(primaryItem.id)"><i class="fa-solid fa-pause text-red-600"></i></span>
-                    <span v-else><i class="fa-solid fa-play text-red-600"></i></span>
+                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none" v-if="primaryItem" @click="playAudioIcon(primaryItem.id)">
+                    <span ><i class="fa-solid fa-pause text-red-600"></i></span>
                   </button>
+                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none" v-else>
+                      <span ><i class="fa-solid fa-play text-red-600"></i></span>
+                    </button>
                   <button class="focus:outline-none pt-1 text-xs">
                     <i class="fa-solid fa-thumbs-down text-red-200 hover:text-red-300"></i>
                   </button>
@@ -79,7 +81,7 @@
             <div class="flex flex-col p-5 max-h-56">
               <div class="border-b pb-1 flex justify-between items-center mb-2">
                 <span class=" text-base font-semibold uppercase text-gray-700"> Oynatma Listesi</span>
-                <img class="w-4 cursor-pointer" src="https://p.kindpng.com/picc/s/152-1529312_filter-ios-filter-icon-png-transparent-png.png" />
+                <i class="fa-solid fa-gears w-4 cursor-not-allowed text-gray-200 hover:text-gray-300"></i>
               </div>
 
               <div class="overflow-auto" v-if="inThePlaylist.length > 0">
@@ -172,6 +174,15 @@ export default {
     toggleCardStatus(value) {
       this.cardStatus = value;
     }
+  },
+
+  created() {
+    setInterval(() => {
+      if(!this.primaryItem) {
+        this.setPrimary();
+        console.log('setted primary');
+      }
+    }, 1000);
   },
 
 };

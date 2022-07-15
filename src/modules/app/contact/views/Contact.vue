@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-20">
+  <div class="py-60 lg:py-20">
     <div class="relative">
 
       <div class="flex justify-center items-center h-screen bg-white">
@@ -29,7 +29,7 @@
           <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-indigo-600 rounded-2xl">
             <div class="flex flex-col text-white">
               <h1 class="font-bold uppercase text-4xl my-4">Ya da</h1>
-              <p class="text-gray-400">Mail atarak, sosyal medya hesaplarımızla bize ulaşabilirsiniz</p>
+              <p class="text-gray-200">Mail atarak, sosyal medya hesaplarımızla bize ulaşabilirsiniz</p>
 
               <div class="flex my-4 w-2/3 lg:w-1/2">
                 <div class="flex flex-col">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="flex flex-col">
                   <h2 class="text-2xl">E-posta</h2>
-                  <p class="text-gray-400">shorproduction@gmail.com</p>
+                  <p class="text-gray-200">shorproduction@gmail.com</p>
                 </div>
               </div>
 
@@ -47,8 +47,8 @@
                 </div>
                 <div class="flex flex-col">
                   <h2 class="text-2xl">Sosyal Medya</h2>
-                  <p class="text-gray-400"><i class="fa-brands fa-instagram"></i> : <a href="https://www.instagram.com/soundaiir/" target="_blank">@soundaiir</a></p>
-                  <p class="text-gray-400"><i class="fa-brands fa-twitter"></i> : <a href="https://twitter.com/SoundAiir" target="_blank">@SoundAiir</a></p>
+                  <p class="text-gray-200"><i class="fa-brands fa-instagram"></i> - <a href="https://www.instagram.com/soundaiir/" target="_blank">@soundaiir</a></p>
+                  <p class="text-gray-200"><i class="fa-brands fa-twitter"></i> - <a href="https://twitter.com/SoundAiir" target="_blank">@SoundAiir</a></p>
                 </div>
               </div>
 
@@ -72,6 +72,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { notify } from '../../../../core/alerts/alerts.service';
 
 export default {
   name: 'Contact',
@@ -91,12 +92,18 @@ export default {
     ...mapActions('Contact', ['postContact']),
 
     async contactButton(data) {
-      await this.postContact({
-        contactName: data.name + data.surname,
-        contactMail: data.email,
-        contactDescription: data.message,
-        contactAcceptFeedback: true,
-      });
+      notify('sa')
+
+      try {
+        await this.postContact({
+          contactName: data.name + data.surname,
+          contactMail: data.email,
+          contactDescription: data.message,
+          contactAcceptFeedback: true,
+        });
+      } catch (e) {
+        notify('sa')
+      }
     },
 
   },

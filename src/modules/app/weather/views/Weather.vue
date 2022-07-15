@@ -4,7 +4,7 @@
 
       <div class="py-10">
         <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-5xl">
-          <span class="inline md:block">Hava Olayları </span>
+          <span class="inline md:block">Hava Olayları 🌍</span>
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> Özelleştirerek bölgendeki hava olaylarını takip edebilirsin!</span>
         </h1>
       </div>
