@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class=" bg-gray-900">
+    <div class="bg-gray-900">
       <div class="max-w-2xl mx-auto text-white py-10">
         <div class="text-center">
           <h3 class="text-3xl font-extrabold leading-10 tracking-tight mb-3">Mobil uygulamamızı indirin </h3>
@@ -29,11 +29,17 @@
           <p class="order-2 md:order-1 mt-8 md:mt-0">Designed by Emre ᔕolmaz in Istanbul. All rights reserved. Copyright 2022 &copy;</p>
           <div class="order-1 md:order-2">
             <span class="px-2 hover:text-indigo-600"><router-link to="/">About us</router-link></span>
-            <span class="px-2 border-l hover:text-indigo-600"><router-link to="/">Contact us</router-link></span>
-            <span class="px-2 border-l hover:text-indigo-600"><router-link to="/">Privacy Policy</router-link></span>
+            <span class="px-2 border-l hover:text-indigo-600"><router-link :to="{ name: 'Contact' }">Contact us</router-link></span>
+            <span class="px-2 border-l hover:text-indigo-600"><router-link :to="{ name: 'PrivacyPolicy' }">Privacy Policy</router-link></span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'TheFooter',
+};
+</script>

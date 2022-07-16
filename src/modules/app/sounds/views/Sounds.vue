@@ -17,7 +17,7 @@
         <section class="flex justify-center items-center grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
 
-            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-40 h-56">
+            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-40 h-64">
 
               <div class="flex flex-col text-white pt-10">
                 <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
@@ -31,7 +31,7 @@
                   <span class="opacity-75 -mb-1">{{ sound.name }}</span>
                     <span v-if="sound.showButton" class="bg-white w-full rounded-full text-orange-500 text-xs font-bold leading-none items-center py-1 mt-8">
                       <span class="font-semibold text-xl">
-                        <input type="range" min="0" max="100" class="volumeSlider my-10 mx-5 w-full" @change="toggleVolumeButton(sound.id)" v-model="sound.volume">
+                        <input type="range" min="0" max="100" class="volumeSlider my-10 mx-5 w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
                     </span>
                   </span>
                   <span v-else></span>
