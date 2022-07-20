@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full">
-      <div class='flex w-10/12 bg-white shadow-2xl rounded-lg overflow-hidden mx-auto mb-5'>
+      <div class="flex bg-white shadow-2xl rounded-lg overflow-hidden mx-auto mb-5 mr-5">
         <div class="flex flex-col w-full">
           <div class="flex p-5 border-b">
             <span v-if="getPrimary">
@@ -27,7 +27,7 @@
                   </span>
                 </span>
               </div>
-              <span class="text-sm text-red-500 capitalize font-semibold pt-1">
+              <span class="text-sm text-indigo-500 capitalize font-semibold pt-1">
                   <span v-if="getPrimary">{{ getPrimary.name }}</span>
                   <span v-else>Ses bulunmuyor</span>
                 </span>
@@ -46,25 +46,25 @@
               <div class="flex items-center">
                 <div class="flex space-x-3 p-2">
                   <button class="focus:outline-none text-xs">
-                    <i class="fa-solid fa-thumbs-up text-red-200 hover:text-red-300"></i>
+                    <i class="fa-solid fa-thumbs-up text-indigo-200 hover:text-indigo-300"></i>
                   </button>
-                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none" v-if="getPrimary" @click="playAudioIcon(getPrimary.id)">
-                    <span ><i class="fa-solid fa-pause text-red-600"></i></span>
+                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-indigo-400 focus:outline-none" v-if="getPrimary" @click="playAudioIcon(getPrimary.id)">
+                    <span ><i class="fa-solid fa-pause text-indigo-600"></i></span>
                   </button>
-                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-red-400 focus:outline-none" v-else>
-                      <span ><i class="fa-solid fa-play text-red-600"></i></span>
+                  <button class="rounded-full w-10 h-10 flex items-center justify-center pl-0.5 ring-1 ring-indigo-400 focus:outline-none" v-else>
+                      <span ><i class="fa-solid fa-play text-indigo-600"></i></span>
                     </button>
                   <button class="focus:outline-none pt-1 text-xs">
-                    <i class="fa-solid fa-thumbs-down text-red-200 hover:text-red-300"></i>
+                    <i class="fa-solid fa-thumbs-down text-indigo-200 hover:text-indigo-300"></i>
                   </button>
                 </div>
               </div>
               <div class="relative w-full sm:w-1/2 md:w-7/12 lg:w-4/6 ml-2">
                 <div v-if="getPrimary">
-                  <input type="range" min="0" max="100" class="volumeSlider w-full bg-red-300" @change="toggleVolumeButton(getPrimary.id)" v-model="getPrimary.volume" />
+                  <input type="range" min="0" max="100" class="volumeSlider w-full bg-indigo-300" @change="toggleVolumeButton(getPrimary.id)" v-model="getPrimary.volume" />
                 </div>
                 <div v-else>
-                  <input type="range" min="0" max="100" v-model="defaultVolume" class="volumeSlider w-full bg-red-300"  />
+                  <input type="range" min="0" max="100" v-model="defaultVolume" class="volumeSlider w-full bg-indigo-300"  />
                 </div>
 
               </div>
@@ -89,7 +89,7 @@
                   <i class="flex justify-start items-center cursor-pointer w-10 text-3xl rounded-lg opacity-75" :title="sound.name" :class="sound.icon"></i>
 
                   <div class="flex flex-col justify-start items-start px-2 w-full">
-                  <span class="text-sm text-red-500 capitalize font-semibold">
+                  <span class="text-sm text-indigo-500 capitalize font-semibold">
                     {{ sound.name }}
                   </span>
                     <span class="text-xs text-gray-500 uppercase font-medium">
@@ -123,7 +123,7 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'Music',
+  name: 'TheNowPlayingWeb',
   emits: ['close'],
   data() {
     return {
@@ -208,7 +208,7 @@ export default {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: red;
+  background: indigo;
   cursor: pointer;
 }
 </style>

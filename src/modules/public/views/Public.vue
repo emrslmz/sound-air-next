@@ -1,16 +1,14 @@
 <template>
-  <section class="w-full h-full bg-white">
+  <section class="w-full h-full bg-white dark:bg-gray-900">
+    <the-header />
     <div class="mx-auto max-w-7xl">
-      <the-header />
 
       <try-now-section />
 
-
-
-      <div class="pt-32 bg-white">
+      <div class="pt-32">
         <div class="container m-auto px-6 space-y-8 md:px-12 lg:px-56">
           <div class="m-auto text-center lg:w-7/12">
-            <h2 class="text-2xl text-gray-700 font-extrabold leading-10 tracking-tight md:text-4xl">Your favorite companies are our partners.</h2>
+            <h2 class="text-gray-700 dark:text-white font-extrabold leading-10 tracking-tight text-2xl sm:text-5xl md:text-6xl lg:text-5xl">Your favorite companies are our partners.</h2>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             <div class="p-4">

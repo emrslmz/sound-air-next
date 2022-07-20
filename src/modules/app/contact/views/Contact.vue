@@ -1,14 +1,14 @@
 <template>
-  <div class="py-60 lg:py-20">
+  <div class="py-60 lg:py-20 bg-white dark:bg-gray-900">
     <div class="relative">
 
-      <div class="flex justify-center items-center h-screen bg-white">
+      <div class="flex justify-center items-center h-screen">
         <div class="container mx-auto my-4 px-4 lg:px-20">
 
-          <div class="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl">
+          <div class="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl bg-zinc-200">
             <div class="py-10">
-              <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:leading-none md:text-6xl lg:text-5xl">
-                <span class="inline md:block">Bizimle iletişime geç! <span>👇</span> </span>
+              <h1 class="font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:leading-none text-4xl sm:text-5xl md:text-6xl lg:text-5xl">
+                <span class="inline md:block dark:text-dark-200">Bizimle iletişime geç! <span>👇</span> </span>
                 <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> Aklına takılan soruları, istek ve öneriler için </span>
               </h1>
             </div>
@@ -26,7 +26,7 @@
             </div>
           </div>
 
-          <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-indigo-600 rounded-2xl">
+          <div class="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 mb-20 ml-auto bg-indigo-600 rounded-2xl">
             <div class="flex flex-col text-white">
               <h1 class="font-bold uppercase text-4xl my-4">Ya da</h1>
               <p class="text-gray-200">Mail atarak, sosyal medya hesaplarımızla bize ulaşabilirsiniz</p>

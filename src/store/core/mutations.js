@@ -6,4 +6,7 @@ export default {
   REMOVE_REQUEST(state, data) {
     state.runningRequests = state.runningRequests.filter((request) => request.id !== data.id);
   },
+  SET_THEME(state, value) {
+    state.darkMode = value;
+  },
 };

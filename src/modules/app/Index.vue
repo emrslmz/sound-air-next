@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="h-full">
+    <div class="h-full w-full">
       <the-header />
       <router-view />
       <the-footer />

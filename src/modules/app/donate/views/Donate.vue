@@ -1,10 +1,11 @@
 <template>
-  <div class="mx-20 pb-20">
+  <div class="bg-white dark:bg-gray-900">
+    <div class="mx-20 pb-20">
     <div class="relative">
 
       <div class="py-16">
-        <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-5xl">
-          <span class="inline md:block">Bavış 💰</span>
+        <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-center text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-5xl">
+          <span class="inline md:block dark:text-white">Bavış 💰</span>
         </h1>
       </div>
 
@@ -45,12 +46,13 @@
             Pay with Ethereum
           </p>
 
-          <p class="mt-5">Uygulamamızı beğendiyseniz, bize katkı sağlamak istiyorsanız üstteki linklerden.. şaka şaka :D <a class="text-blue-600 hover:underline" href="" target="_blank">bavış yap</a>.
+          <p class="mt-5 dark:text-white">Uygulamamızı beğendiyseniz, bize katkı sağlamak istiyorsanız üstteki linklerden.. şaka şaka :D <a class="text-blue-600 dark:text-blue-200 hover:underline" href="" target="_blank">bavış yap</a>.
           </p>
         </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>

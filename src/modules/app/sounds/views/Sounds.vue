@@ -1,37 +1,38 @@
 <template>
-  <div class="mx-20 pb-20">
+  <div class="bg-white dark:bg-gray-900">
+    <div class="mx-10 sm:mx-20 pb-20">
     <div class="relative">
-      <div class="fixed bottom-0 right-0 w-1/3 z-20">
+      <div class="fixed bottom-0 right-0 md:w-7/12 xl:w-5/12 2xl:w-4/12 z-20 hidden md:block">
         <the-now-playing @close="toggleNowPlayingCard(false)" />
       </div>
 
       <div class="py-10">
-        <h1 class="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-5xl">
-          <span class="inline md:block">İkonlara Tıklayarak </span>
+        <h1 class="font-extrabold leading-10 tracking-tight text-center sm:text-left text-gray-900 md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
+          <span class="inline md:block dark:text-gray-200">İkonlara Tıklayarak </span>
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> çalmaya başla!</span> <span> 😸</span>
         </h1>
       </div>
 
 
-      <div v-if="sounds.length" class="max-w-2xl mx-auto">
-        <section class="flex justify-center items-center grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3">
-          <div class="flex justify-center mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
+      <div v-if="sounds.length" class="w-full md:max-w-2xl mx-auto">
+        <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
+          <div class="flex justify-center md:mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
 
-            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-40 h-64">
+            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-28 sm:w-40 h-56 sm:min-h-64">
 
-              <div class="flex flex-col text-white pt-10">
+              <div class="flex flex-col text-white pt-10 w-full">
                 <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
                   <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
                   <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
                 </svg>
-                <div class="relative flex items-center justify-center text-7xl">
+                <div class="relative flex items-center justify-center text-5xl sm:text-7xl">
                   <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sound.name" :class="sound.icon" :style="sound.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
                 </div>
-                <div class="relative text-white px-6 pb-6 mt-6 text-center">
+                <div class="relative text-white md:px-6 pb-6 mt-6 text-center w-full">
                   <span class="opacity-75 -mb-1">{{ sound.name }}</span>
-                    <span v-if="sound.showButton" class="bg-white w-full rounded-full text-orange-500 text-xs font-bold leading-none items-center py-1 mt-8">
-                      <span class="font-semibold text-xl">
-                        <input type="range" min="0" max="100" class="volumeSlider my-10 mx-5 w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
+                    <span v-if="sound.showButton" class="bg-white rounded-full text-orange-500 text-xs font-bold leading-none items-center py-1 mt-8">
+                      <span class="font-semibold ">
+                        <input type="range" min="0" max="100" class="volumeSlider my-10 sm:mx-5 w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
                     </span>
                   </span>
                   <span v-else></span>
@@ -83,6 +84,7 @@
       </div>
 
     </div>
+  </div>
   </div>
 </template>
 

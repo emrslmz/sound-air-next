@@ -9,3 +9,5 @@ export const crossAppUrl = () => config.VITE_CROSS_APP_URL;
 export const getEnvironmentVariable = () => (key) =>config[key];
 
 export const isProduction = () => config.VITE_APP_TYPE === 'production';
+
+export const getTheme = (state) => state.darkMode;
