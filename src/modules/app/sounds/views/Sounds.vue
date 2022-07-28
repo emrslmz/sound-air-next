@@ -16,7 +16,6 @@
         </h1>
       </div>
 
-
       <div v-if="sounds.length" class="w-full md:max-w-2xl mx-auto">
         <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center md:mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">

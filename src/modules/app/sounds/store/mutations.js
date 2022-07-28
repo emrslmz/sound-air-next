@@ -42,4 +42,26 @@ export default {
 
         foundSoundById.player.volume = foundSoundById.volume / 100;
     },
+    FORWARD_AUDIO(state) {
+        const zerothItem = state.inThePlaylist[0];
+        const firstItem = state.inThePlaylist[1];
+
+        state.inThePlaylist.splice(0, 2);
+
+        return state.inThePlaylist = [
+            firstItem, ...state.inThePlaylist, zerothItem
+        ];
+    },
+    BACK_AUDIO(state) {
+        const zerothItem = state.inThePlaylist[0];
+        const lastItem = state.inThePlaylist[state.inThePlaylist.length - 1];
+
+        state.inThePlaylist.splice(0, 1);
+        state.inThePlaylist.splice(state.inThePlaylist.length - 1, 1);
+
+        return state.inThePlaylist = [
+            lastItem, zerothItem, ...state.inThePlaylist
+        ];
+
+    },
 };

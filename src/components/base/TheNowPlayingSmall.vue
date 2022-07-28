@@ -159,18 +159,14 @@ export default {
   },
 
   methods: {
-    ...mapActions('Sounds', ['playSettings', 'volumeSettings']),
+    ...mapActions('Sounds', ['playSettings', 'volumeSettings', 'forwardBackButton']),
 
     toggleShareApp(type) {
       this.shareApp = type;
     },
 
-    backForwardAudio(type) {
-      this.specificIemInPlaylist(type);
-    },
-
-    specificIemInPlaylist(type) {  //type 1 = backAudio, type 2 = ForwardAudio
-
+    async backForwardAudio(type) {
+      await this.forwardBackButton(type);
     },
 
     setPrimary(id, index) {

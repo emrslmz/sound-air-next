@@ -153,16 +153,11 @@ export default {
   },
 
   methods: {
-    ...mapActions('Sounds', ['playSettings', 'volumeSettings']),
+    ...mapActions('Sounds', ['playSettings', 'volumeSettings', 'forwardBackButton']),
 
-    backForwardAudio(type) {
-      this.specificIemInPlaylist(type);
+    async backForwardAudio(type) {
+      await this.forwardBackButton(type);
     },
-
-    specificIemInPlaylist(type) {  //type 1 = backAudio, type 2 = ForwardAudio
-
-    },
-
 
     setPrimary(id, index) {
       if (id) {
