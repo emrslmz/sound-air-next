@@ -1,9 +1,12 @@
 <template>
   <div class="bg-white dark:bg-gray-900">
-    <div class="mx-10 sm:mx-20 pb-20">
+    <div class="sm:mx-20 pb-20">
     <div class="relative">
-      <div class="fixed bottom-0 right-0 md:w-7/12 xl:w-5/12 2xl:w-4/12 z-20 hidden md:block">
-        <the-now-playing @close="toggleNowPlayingCard(false)" />
+      <div class="fixed bottom-0 right-0 md:w-7/12 xl:w-5/12 2xl:w-4/12 z-40 hidden md:block">
+        <the-now-playing-large @close="toggleNowPlayingLargeCard(false)" />
+      </div>
+      <div class="fixed bottom-0 w-full block md:hidden z-40">
+        <the-now-playing-small @close="toggleNowPlayingLargeCard(false)" />
       </div>
 
       <div class="py-10">
@@ -18,18 +21,18 @@
         <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center md:mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
 
-            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-28 sm:w-40 h-56 sm:min-h-64">
+            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-28 sm:w-40 h-56 sm:min-h-64" >
 
               <div class="flex flex-col text-white pt-10 w-full">
                 <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
                   <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
                   <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
                 </svg>
-                <div class="relative flex items-center justify-center text-5xl sm:text-7xl">
+                <div class="relative flex flex-col items-center justify-center text-5xl sm:text-7xl">
                   <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sound.name" :class="sound.icon" :style="sound.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
                 </div>
                 <div class="relative text-white md:px-6 pb-6 mt-6 text-center w-full">
-                  <span class="opacity-75 -mb-1">{{ sound.name }}</span>
+                  <span class="opacity-75"> {{ sound.name }} </span>
                     <span v-if="sound.showButton" class="bg-white rounded-full text-orange-500 text-xs font-bold leading-none items-center py-1 mt-8">
                       <span class="font-semibold ">
                         <input type="range" min="0" max="100" class="volumeSlider my-10 sm:mx-5 w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
@@ -77,7 +80,7 @@
               </svg>
                 Sesler yükleniyor...$
               </p>
-              <p class="pb-1" @click="fetchSounds()">>yenilemek icin tikla$</p>
+              <p class="pb-1">>yenilemek icin tikla$</p>
             </div>
           </div>
         </div>
@@ -90,15 +93,17 @@
 
 <script>
 import { mapState, mapActions} from 'vuex';
-import TheNowPlaying from '../../../../components/base/TheNowPlaying.vue';
+import TheNowPlayingLarge from '../../../../components/base/TheNowPlayingLarge.vue';
+import TheNowPlayingSmall from '../../../../components/base/TheNowPlayingSmall.vue';
 
 export default {
   name: 'SoundsPage',
-  components: { TheNowPlaying },
+  components: { TheNowPlayingLarge, TheNowPlayingSmall },
 
   data() {
     return {
-      nowPlayingCard: false,
+      nowPlayingLargeCard: false,
+      nowPlayingSmallCard: false,
       errors: {},
     };
   },
@@ -111,8 +116,12 @@ export default {
   methods: {
     ...mapActions('Sounds', ['getAudios', 'playSettings', 'volumeSettings']),
 
-    toggleNowPlayingCard(value) {
-      this.nowPlayingCard = value;
+    toggleNowPlayingLargeCard(value) {
+      this.nowPlayingLargeCard = value;
+    },
+
+    toggleNowPlayingSmallCard(value) {
+      this.nowPlayingSmallCard = value;
     },
 
     async playAudioIcon(id) {

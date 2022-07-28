@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white dark:bg-gray-900">
-    <nav class="relative z-50 select-none border-b border-gray-200 dark:border-white">
+    <nav class="relative z-20 select-none border-b border-gray-200 dark:border-white">
       <div class="container relative flex flex-wrap items-center justify-between h-24 mx-auto overflow-hidden font-medium md:overflow-visible lg:justify-center sm:px-4 md:px-2">
         <div class="flex items-center justify-start w-1/4 h-full pr-4">
           <a href="#_" class="inline-block py-4 md:py-0 pl-5">
@@ -19,33 +19,14 @@
               </div>
             </div>
 
-            <div class="flex flex-col items-start justify-end w-full pt-4 md:items-center md:w-1/3 md:flex-row md:py-0">
-              <div class="w-full px-6 py-2 mr-0 text-gray-700 dark:text-white md:px-0 lg:pl-2 md:mr-4 lg:mr-5 md:w-auto">
-                  <div class="flex justify-center">
-                    <div class="flex justify-center">
-
-                      <div class="flex items-center gap-2 rounded-lg bg-indigo-500 p-2">
-                        <div class="flex h-5 w-9 items-center rounded-full bg-indigo-300 cursor-pointer" @click="toggleTheme">
-                          <input class="peer hidden" type="checkbox" v-model="darkMode" />
-                          <div class="h-3 w-3 translate-x-1 rounded-full bg-white transition-transform peer-checked:translate-x-5"></div>
-                        </div>
-                        <div class="text-white">
-                          <i v-if="darkMode" class="fas fa-moon" ></i>
-                          <i v-else class="fas fa-sun"></i>
-                        </div>
-                        {{ darkMode }}
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
+            <dark-mode />
 
           </div>
           <!--/WEB-DEVICES-->
 
         </div>
 
-        <div @click="showMenu = !showMenu" class="absolute right-0 flex flex-col items-center justify-center w-10 h-10 bg-white rounded-full cursor-pointer md:hidden hover:bg-gray-100 text-xl text-gray-900 mr-5">
+        <div @click="showMenu = !showMenu" class="absolute right-0 flex flex-col items-center justify-center w-10 h-10 bg-white rounded-full cursor-pointer md:hidden hover:bg-gray-100 text-xl text-gray-800 mr-5">
           <div v-show="showMenu">
             <i class="fas fa-circle-xmark"></i>
           </div>
@@ -57,11 +38,12 @@
       </div>
 
       <!--MOBILE-DEVICES-->
-      <div class="flex flex-wrap items-center justify-center w-full px-28" v-show="showMenu">
-        <div class="flex flex-wrap items-center justify-center text-center">
-          <div class="bg-indigo-500 rounded-full text-white" v-for="(item, index) in headerMenuItems" :key="index">
-            <router-link :to="{ name: item.name }" class="inline-block w-full py-2 mx-0 ml-6 font-medium text-left hover:text-indigo-900 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center">{{ item.title}}</router-link>
-          </div>
+      <div v-show="showMenu">
+        <div class="flex flex-wrap flex-col justify-center items-center py-3">
+          <router-link :to="{ name: item.name }" class="rounded-lg bg-indigo-700 text-gray-200 font-bold mx-16 py-2 my-2 text-center border-2 border-indigo-900 w-1/2" v-for="(item, index) in headerMenuItems" :key="index">{{ item.title }}</router-link>
+
+          <dark-mode />
+
         </div>
       </div>
       <!--/MOBILE-DEVICES-->
@@ -71,10 +53,11 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import DarkMode from './DarkMode.vue';
 
 export default {
   name: 'TheHeader',
+  components: { DarkMode },
 
   data() {
     return {
@@ -113,23 +96,17 @@ export default {
     };
   },
 
-  computed: {
-    ...mapState('Core', ['darkMode']),
-  },
-
-  methods: {
-    ...mapActions('Core', ['changeTheme']),
-
-    toggleTheme() {
-      this.changeTheme(!this.darkMode);
-    },
-  },
-
 };
 </script>
 
 <style scoped>
 .router-link-active {
   color: #4f46e5;
+}
+
+@media (max-width:800px) {
+  .router-link-active {
+    color: rgb(129 140 248);
+  }
 }
 </style>
