@@ -20,7 +20,7 @@
         <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
           <div class="flex justify-center md:mx-20 mb-20" v-for="(sound, index) in sounds" :key="index">
 
-            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-28 sm:w-40 h-56 sm:min-h-64" >
+            <div class="flex-shrink-0 relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-32 sm:w-40 h-48 sm:min-h-64">
 
               <div class="flex flex-col text-white pt-10 w-full">
                 <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
@@ -30,11 +30,11 @@
                 <div class="relative flex flex-col items-center justify-center text-5xl sm:text-7xl">
                   <i class="opacity-50 hover:opacity-100 cursor-pointer" :title="sound.name" :class="sound.icon" :style="sound.active ? 'opacity: 1' : ''" @click="playAudioIcon(sound.id)"></i>
                 </div>
-                <div class="relative text-white md:px-6 pb-6 mt-6 text-center w-full">
-                  <span class="opacity-75"> {{ sound.name }} </span>
-                    <span v-if="sound.showButton" class="bg-white rounded-full text-orange-500 text-xs font-bold leading-none items-center py-1 mt-8">
-                      <span class="font-semibold ">
-                        <input type="range" min="0" max="100" class="volumeSlider my-10 sm:mx-5 w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
+                <div class="text-white text-center flex flex-col">
+                  <span class="opacity-75 pt-2"> {{ sound.name }}</span>
+                    <span v-if="sound.showButton" class="bg-white rounded-full text-orange-500 text-xs font-bold leading-none items-center py-2 mx-2 my-6 sm:mx-5 sm:my-4">
+                      <span class="font-semibold">
+                        <input type="range" min="0" max="100" class="volumeSlider w-full" @change.stop="toggleVolumeButton(sound.id)" v-model="sound.volume">
                     </span>
                   </span>
                   <span v-else></span>

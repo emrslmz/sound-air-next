@@ -1,4 +1,4 @@
-import {notify} from '../../../../core/alerts/alerts.service';
+import { notify } from '../../../../core/alerts/alerts.service';
 
 export default {
     SET_AUDIOS(state, data) {
@@ -43,25 +43,32 @@ export default {
         foundSoundById.player.volume = foundSoundById.volume / 100;
     },
     FORWARD_AUDIO(state) {
-        const zerothItem = state.inThePlaylist[0];
-        const firstItem = state.inThePlaylist[1];
+        if (state.length > 2) {
+            const zerothItem = state.inThePlaylist[0];
+            const firstItem = state.inThePlaylist[1];
 
-        state.inThePlaylist.splice(0, 2);
+            state.inThePlaylist.splice(0, 2);
 
-        return state.inThePlaylist = [
-            firstItem, ...state.inThePlaylist, zerothItem
-        ];
+            return state.inThePlaylist = [
+                firstItem, ...state.inThePlaylist, zerothItem
+            ];
+        } else {
+            notify('Sonraki ses dosyası bulunmuyor.')
+        }
     },
     BACK_AUDIO(state) {
-        const zerothItem = state.inThePlaylist[0];
-        const lastItem = state.inThePlaylist[state.inThePlaylist.length - 1];
+        if (state.length > 2) {
+            const zerothItem = state.inThePlaylist[0];
+            const lastItem = state.inThePlaylist[state.inThePlaylist.length - 1];
 
-        state.inThePlaylist.splice(0, 1);
-        state.inThePlaylist.splice(state.inThePlaylist.length - 1, 1);
+            state.inThePlaylist.splice(0, 1);
+            state.inThePlaylist.splice(state.inThePlaylist.length - 1, 1);
 
-        return state.inThePlaylist = [
-            lastItem, zerothItem, ...state.inThePlaylist
-        ];
-
+            return state.inThePlaylist = [
+                lastItem, zerothItem, ...state.inThePlaylist
+            ];
+        } else {
+            notify('Önceki ses dosyası bulunmuyor.')
+        }
     },
 };

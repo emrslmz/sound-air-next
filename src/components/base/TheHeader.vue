@@ -40,9 +40,10 @@
       <!--MOBILE-DEVICES-->
       <div v-show="showMenu">
         <div class="flex flex-wrap flex-col justify-center items-center py-3">
-          <router-link :to="{ name: item.name }" class="rounded-lg bg-indigo-700 text-gray-200 font-bold mx-16 py-2 my-2 text-center border-2 border-indigo-900 w-1/2" v-for="(item, index) in headerMenuItems" :key="index">{{ item.title }}</router-link>
 
           <dark-mode />
+
+          <router-link :to="{ name: item.name }" class="rounded-lg bg-indigo-700 text-gray-200 font-bold mx-16 py-2 my-2 text-center border-2 border-indigo-900 w-1/2" v-for="(item, index) in headerMenuItems" :key="index">{{ item.title }}</router-link>
 
         </div>
       </div>

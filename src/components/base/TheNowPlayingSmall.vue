@@ -59,23 +59,23 @@
 
       <div class="bg-gray-50 text-black dark:bg-gray-900 dark:text-white px-4 pt-1 pb-4 items-center">
 
-       <div class="grid grid-cols-5 items-center">
+       <div class="grid grid-cols-5 items-center pt-2">
 
          <button type="button" class="mx-auto text-gray-500" @click="toggleShareApp(true)">
            <i class="fa-solid fa-share-nodes"></i>
          </button>
 
          <button class="mx-auto text-2xl" @click="backForwardAudio(1)">
-           <i class="fa-solid fa-forward-fast fa-rotate-180 text-indigo-200 hover:text-indigo-300"></i>
+           <i class="fa-solid fa-forward-fast fa-rotate-180 text-lime-300 hover:text-lime-600 hover:text-lime-300"></i>
          </button>
-         <button class="rounded-full w-16 h-16 flex items-center justify-center text-3xl ring-1 ring-indigo-400 mx-auto" v-if="getPrimary" @click="playAudioIcon(getPrimary.id)">
-           <span ><i class="fa-solid fa-pause text-indigo-600 dark:text-indigo-200"></i></span>
+         <button class="rounded-full w-16 h-16 flex items-center justify-center text-3xl ring-1 ring-lime-400 mx-auto" v-if="getPrimary" @click="playAudioIcon(getPrimary.id)">
+           <span ><i class="fa-solid fa-pause text-lime-600 dark:text-lime-200"></i></span>
          </button>
-         <button class="rounded-full w-16 h-16 flex items-center justify-center text-3xl ring-1 ring-indigo-400 mx-auto" v-else>
-           <span ><i class="fa-solid fa-play text-indigo-600 dark:text-indigo-200"></i></span>
+         <button class="rounded-full w-16 h-16 flex items-center justify-center text-3xl ring-1 ring-lime-400 mx-auto" v-else>
+           <span ><i class="fa-solid fa-play text-lime-600 dark:text-lime-200"></i></span>
          </button>
          <button class="mx-auto text-2xl" @click="backForwardAudio(2)">
-           <i class="fa-solid fa-forward-fast text-indigo-200 hover:text-indigo-300"></i>
+           <i class="fa-solid fa-forward-fast text-lime-300 hover:text-lime-600 hover:text-lime-300"></i>
          </button>
 
          <button type="button" class="hidden sm:block lg:hidden xl:block mx-auto">
