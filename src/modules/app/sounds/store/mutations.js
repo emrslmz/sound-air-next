@@ -43,7 +43,7 @@ export default {
         foundSoundById.player.volume = foundSoundById.volume / 100;
     },
     FORWARD_AUDIO(state) {
-        if (state.length > 2) {
+        if (state.inThePlaylist.length > 1) {
             const zerothItem = state.inThePlaylist[0];
             const firstItem = state.inThePlaylist[1];
 
@@ -57,7 +57,7 @@ export default {
         }
     },
     BACK_AUDIO(state) {
-        if (state.length > 2) {
+        if (state.inThePlaylist.length > 1) {
             const zerothItem = state.inThePlaylist[0];
             const lastItem = state.inThePlaylist[state.inThePlaylist.length - 1];
 
