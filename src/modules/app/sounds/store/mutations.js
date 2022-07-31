@@ -71,4 +71,7 @@ export default {
             notify('Önceki ses dosyası bulunmuyor.')
         }
     },
+    SET_CATEGORIES(state, data) {
+        state.categories = data;
+    },
 };

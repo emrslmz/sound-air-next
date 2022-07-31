@@ -46,7 +46,7 @@
             Pay with Ethereum
           </p>
 
-          <p class="mt-5 dark:text-white">Uygulamamızı beğendiyseniz, bize katkı sağlamak istiyorsanız üstteki linklerden.. şaka şaka :D <a class="text-blue-600 dark:text-blue-200 hover:underline" href="" target="_blank">bavış yap</a>.
+          <p class="mt-5 dark:text-white">Uygulamamızı beğendiyseniz, bize katkı sağlamak istiyorsanız üstteki linklerden.. şaka şaka :D <a class="text-blue-600 dark:text-blue-200 hover:underline" href="https://emresolmaz.com.tr" target="_blank">bavış yap</a>.
           </p>
         </div>
       </div>

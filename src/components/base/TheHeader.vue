@@ -70,7 +70,7 @@ export default {
           name: 'Public',
         },
         {
-          title: 'Sesler',
+          title: 'Dinle',
           name: 'Sounds',
         },
         {
@@ -82,8 +82,8 @@ export default {
           name: 'Weather',
         },
         {
-          title: 'Ekstra',
-          name: 'Public',
+          title: 'Öğren',
+          name: 'HowItsWorks',
         },
         {
           title: 'İletişim',

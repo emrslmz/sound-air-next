@@ -7,4 +7,9 @@ export default class SoundsServices extends ApiService {
         return this.get();
     }
 
+    async fetchSound(id) {
+        this.url = `audios/${id}`;
+        return await this.get();
+    }
+
 }

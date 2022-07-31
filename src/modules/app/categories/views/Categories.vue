@@ -1,39 +1,38 @@
 <template>
   <div>
-    <div class="py-20 pb-36 bg-gray-900 items-center justify-center">
+    <div class="py-20 pb-36 bg-white dark:bg-gray-900 items-center justify-center">
 
       <div class="pb-10">
-        <h1 class="font-extrabold leading-10 tracking-tight text-center md:text-left text-white md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
-          <span class="inline md:block">Çalma listesi oluştururken zorlanıyor musun? </span>
+        <h1 class="font-extrabold leading-10 tracking-tight text-center md:text-left text-gray-900 md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
+          <span class="inline md:block dark:text-gray-200">Çalma listesi oluştururken zorlanıyor musun? </span>
           <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> kategorileri dene!</span> <span> 🤩</span>
         </h1>
       </div>
 
       <div class="flex flex-col m-auto p-auto  overflow-x-scroll hide-scroll-bar">
-        <h1 class="flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-white">Senin için</h1>
+        <h1 class="flex py-5 lg:px-10 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl dark:text-white">Senin için,</h1>
 
         <div class="flex pb-10">
-          <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10">
+          <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10" v-if="categories.length">
 
-            <div class="inline-block px-3" v-for="(data, index) in 9" :key="index">
+            <div class="inline-block px-3" v-for="(category, index) in categories" :key="index">
               <div class="w-64 h-min-64 max-w-xs overflow-hidden rounded-lg duration-300 ease-in-out">
 
-                <div class="flex flex-col gap-1">
+                <div class="flex flex-col gap-1" @click="toggleInviteModal(true, category)">
                     <!-- Image -->
-                    <a href="" class="bg-purple-500">
-                      <img src="https://static-cdn.jtvnw.net/ttv-boxart/516575-285x380.jpg" class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100" />
-                    </a>
+                    <div class="bg-purple-500 cursor-pointer">
+                      <div class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 bg-cover bg-center h-72" :alt="category.name" :style="`background-image: url('../../../../../src/assets/images/categories/${category.image}')`"></div>
+                    </div>
 
                     <!-- Games Title -->
-                    <a href="#" class="hover:text-purple-500 text-gray-200 font-semibold"> VALORANT </a>
+                    <button class="hover:text-purple-500 font-semibold text-left uppercase text-dark-900 dark:text-gray-200"> {{ category.name }} </button>
 
                     <!-- Viewers -->
-                    <a href="#" class="hover:text-purple-500 text-sm text-gray-400 -mt-1"> 78.4K viewers </a>
+                    <button class="hover:text-purple-500 text-sm dark:text-gray-400 -mt-1 text-left"> {{ category.viewers }}B oynatma </button>
 
                     <!-- Category Tags -->
                     <div class="flex flex-row flex-wrap gap-2">
-                      <a href="#" class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full"> Shooter </a>
-                      <a href="#" class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full"> FPS </a>
+                      <button class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full" v-for="(category, categoryIndex) in category.tags" :key="categoryIndex"> {{ category }} </button>
                     </div>
                 </div>
 
@@ -43,7 +42,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="text-center flex items-center justify-center keyboard text-white">
         <div @click="scroll_left"><button class="minecraft-btn mx-auto text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-200 mx-2">
@@ -56,14 +54,46 @@
       </div>
 
 
+      <div>
+        <category-content v-if="isCategoryContentVisible"  :category="selectedCategory" @close="toggleInviteModal(false)" />
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
+import CategoryContent from '@/components/CategoryContent.vue';
+import { mapState, mapActions } from 'vuex';
+
 export default {
   name: 'Categories',
+
+  components: { CategoryContent },
+
+  data() {
+    return {
+      isCategoryContentVisible: false,
+      selectedCategory: {},
+    };
+  },
+
+  computed: {
+    ...mapState('Sounds', ['categories', 'sounds']),
+  },
+
   methods: {
+    ...mapActions('Sounds', ['getCategories', 'getAudios']),
+
+    toggleInviteModal(value, data) {
+      this.isCategoryContentVisible = value;
+      if (data) {
+        this.selectedCategory = data;
+      } else {
+        this.selectedCategory = {};
+      }
+    },
+
     scroll_left() {
     let content = document.querySelector(".hide-scroll-bar");
     content.scrollLeft -= 100;
@@ -71,8 +101,29 @@ export default {
     scroll_right() {
       let content = document.querySelector(".hide-scroll-bar");
       content.scrollLeft += 100;
+    },
+
+    async fetchSounds() {
+      try {
+        await this.getAudios();
+        this.errors = {};
+      } catch (e) {
+        this.errors = e;
+      }
+    },
+
+  },
+
+  async created() {
+    if (!this.categories.length) {
+      await this.getCategories();
+    }
+
+    if (!this.sounds.length) {
+      await this.fetchSounds();
     }
   },
+
 };
 </script>
 

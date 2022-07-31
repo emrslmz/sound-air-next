@@ -5,21 +5,21 @@
       <div class="flex justify-center items-center h-screen">
         <div class="container mx-auto my-4 px-4 lg:px-20">
 
-          <div class="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl bg-zinc-200">
+          <div class="w-full p-8 my-4 md:px-12 lg:w-9/12 lg:pl-20 lg:pr-40 mr-auto rounded-2xl shadow-2xl bg-zinc-200 dark:bg-gray-800">
             <div class="py-10">
-              <h1 class="font-extrabold leading-10 tracking-tight text-left text-gray-900 sm:leading-none text-4xl sm:text-5xl md:text-6xl lg:text-5xl">
+              <h1 class="font-extrabold leading-10 tracking-tight text-left text-gray-900 dark:text-white sm:leading-none text-4xl sm:text-5xl md:text-6xl lg:text-5xl">
                 <span class="inline md:block dark:text-dark-200">Bizimle iletişime geç! <span>👇</span> </span>
                 <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> Aklına takılan soruları, istek ve öneriler için </span>
               </h1>
             </div>
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
-              <input class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="İsim" v-model="model.name" />
-              <input class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="Soy isim" v-model="model.surname" />
+              <input class="w-full bg-gray-100 dark:bg-gray-400 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="İsim" v-model="model.name" />
+              <input class="w-full bg-gray-100 dark:bg-gray-400 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" placeholder="Soy isim" v-model="model.surname" />
             </div>
-            <input class="w-full bg-gray-100 text-gray-900 mt-4 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="email" placeholder="Mail adres" v-model="model.email" />
+            <input class="w-full bg-gray-100 dark:bg-gray-400 text-gray-900 mt-4 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="email" placeholder="Mail adres" v-model="model.email" />
 
             <div class="my-2">
-              <textarea placeholder="Mesajın" class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" v-model="model.message"></textarea>
+              <textarea placeholder="Mesajın" class="w-full h-32 bg-gray-100 dark:bg-gray-400 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" v-model="model.message"></textarea>
             </div>
             <div class="my-2 w-1/2 lg:w-1/4">
               <button class="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-indigo-600 border border-transparent rounded-full md:w-auto hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600" @click="postContact(model)">Gönder</button>

@@ -28,7 +28,7 @@
         <div class="mt-28 flex flex-col md:flex-row md:justify-between items-center text-xs text-gray-400">
           <p class="order-2 md:order-1 mt-8 md:mt-0 mx-5 text-center">Designed by Emre ᔕolmaz in Istanbul. All rights reserved. Copyright 2022 &copy;</p>
           <div class="order-1 md:order-3">
-            <span class="px-2 hover:text-indigo-600"><router-link to="/">About us</router-link></span>
+            <span class="px-2 hover:text-indigo-600"><router-link :to="{ name: 'About' }">About us</router-link></span>
             <span class="px-2 border-l hover:text-indigo-600"><router-link :to="{ name: 'Contact' }">Contact us</router-link></span>
             <span class="px-2 border-l hover:text-indigo-600"><router-link :to="{ name: 'PrivacyPolicy' }">Privacy Policy</router-link></span>
           </div>
