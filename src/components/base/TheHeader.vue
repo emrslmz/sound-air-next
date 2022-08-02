@@ -2,12 +2,18 @@
   <div class="bg-white dark:bg-gray-900">
     <nav class="relative z-20 select-none border-b border-gray-200 dark:border-white">
       <div class="container relative flex flex-wrap items-center justify-between h-24 mx-auto overflow-hidden font-medium md:overflow-visible lg:justify-center sm:px-4 md:px-2">
-        <div class="flex items-center justify-start w-1/4 h-full pr-4">
-          <a href="#_" class="inline-block py-4 md:py-0 pl-5">
-            <span class="p-1 text-xl font-black leading-none text-gray-900 dark:text-white">
-              <span>sound air</span><span class="text-indigo-600">.</span>
-            </span>
-          </a>
+        <div class="flex items-center justify-start md:w-1/4 pr-4">
+          <router-link to="/" class="py-4 md:py-0 w-full ">
+<!--            <span class="p-1 text-xl leading-none text-gray-900 dark:text-white">-->
+<!--              <span>sound air</span><span class="text-indigo-600">.</span>-->
+<!--            </span>-->
+           <span class="dark:hidden block">
+              <img src="@/assets/images/logo/sound-air_black.png" width="200" alt="Sound Air" />
+           </span>
+            <span class="dark:block hidden">
+              <img src="@/assets/images/logo/sound-air_white.png" width="200"  alt="Sound Air" />
+           </span>
+          </router-link>
         </div>
         <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex">
         <!--WEB-DEVICES-->

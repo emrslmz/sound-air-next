@@ -75,9 +75,9 @@
 </template>
 
 <script>
-import TheHeader from '../../../components/base/TheHeader.vue';
-import TheFooter from '../../../components/base/TheFooter.vue';
-import TryNowSection from '../../../modules/public/components/TryNowSection.vue';
+import TheHeader from '@/components/base/TheHeader.vue';
+import TheFooter from '@/components/base/TheFooter.vue';
+import TryNowSection from '@/modules/public/components/TryNowSection.vue';
 
 export default {
   name: 'Public',
