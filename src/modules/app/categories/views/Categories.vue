@@ -21,7 +21,7 @@
                 <div class="flex flex-col gap-1" @click="toggleInviteModal(true, category)">
                     <!-- Image -->
                     <div class="bg-purple-500 cursor-pointer">
-                      <div class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 bg-cover bg-center h-72" :alt="category.name" :style="`background-image: url('@/assets/images/categories/${category.image}')`"></div>
+                      <div class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 bg-cover bg-center h-72" :alt="category.name" :style="`background-image: url('${category.image}')`"></div>
                     </div>
 
                     <!-- Games Title -->

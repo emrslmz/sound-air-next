@@ -8,10 +8,10 @@
 <!--              <span>sound air</span><span class="text-indigo-600">.</span>-->
 <!--            </span>-->
            <span class="dark:hidden block">
-              <img src="@/assets/images/logo/sound-air_black.png" width="200" alt="Sound Air" />
+              <img src="@/assets/images/logo/sound-air_black.png" width="200" class="md:pr-20 lg:pr-2" alt="Sound Air" />
            </span>
             <span class="dark:block hidden">
-              <img src="@/assets/images/logo/sound-air_white.png" width="200"  alt="Sound Air" />
+              <img src="@/assets/images/logo/sound-air_white.png" width="200" class="md:pr-20 lg:pr-2" alt="Sound Air" />
            </span>
           </router-link>
         </div>
