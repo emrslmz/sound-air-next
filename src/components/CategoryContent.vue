@@ -18,6 +18,9 @@
         <!-- Modal body -->
         <div class="px-6 py-4 space-y-6">
           <p class="text-gray-500 text-base leading-relaxed dark:text-white">
+          <i :class="category.icon"></i>  {{ category.description }}
+          </p>
+          <p class="text-gray-500 text-xs leading-relaxed dark:text-white">
             Bu kategoride şu sesler mevcut;
           </p>
 
