@@ -3,10 +3,6 @@ import { notify } from '../../../../core/alerts/alerts.service';
 export default {
     SET_AUDIOS(state, data) {
         state.sounds = data;
-
-        state.sounds.forEach(sound => {
-            sound.player = new Audio(sound.audioName)
-        });
     },
     PLAY_AUDIOS(state, id) {
 
@@ -14,6 +10,7 @@ export default {
 
 
         if (foundSoundById.active === false) {
+            foundSoundById.player = new Audio(foundSoundById.audioName);
             foundSoundById.player.play();
             foundSoundById.player.loop = true;
             foundSoundById.showButton = true;

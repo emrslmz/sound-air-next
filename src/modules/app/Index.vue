@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="h-full w-full">
+    <div class="h-full w-full" @click="toggleCard(false)">
       <the-header />
       <div class="relative">
         <div class="fixed bottom-0 right-0 md:w-7/12 xl:w-5/12 2xl:w-4/12 z-40 hidden md:block">
@@ -42,6 +42,11 @@ export default {
 
     toggleNowPlayingSmallCard(value) {
       this.nowPlayingSmallCard = value;
+    },
+
+    toggleCard(value) {
+      this.toggleNowPlayingLargeCard(value);
+      this.toggleNowPlayingSmallCard(value);
     },
 
     setPathThatWantToGo() {

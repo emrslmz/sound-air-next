@@ -44,15 +44,15 @@
         </div>
       </div>
 
-      <div class="text-center flex items-center justify-center keyboard text-white">
-        <div @click="scroll_left"><button class="minecraft-btn mx-auto text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-200 mx-2">
-          <i class="fa-solid fa-circle-left text-2xl"></i>
-        </button></div>
+<!--      <div class="text-center flex items-center justify-center keyboard text-white">-->
+<!--        <div @click="scroll_left"><button class="minecraft-btn mx-auto text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-200 mx-2">-->
+<!--          <i class="fa-solid fa-circle-left text-2xl"></i>-->
+<!--        </button></div>-->
 
-        <div @click="scroll_right"><button class="minecraft-btn mx-auto text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-200 mx-2">
-          <i class="fas fa-circle-right text-2xl"></i>
-        </button></div>
-      </div>
+<!--        <div @click="scroll_right"><button class="minecraft-btn mx-auto text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-200 mx-2">-->
+<!--          <i class="fas fa-circle-right text-2xl"></i>-->
+<!--        </button></div>-->
+<!--      </div>-->
 
 
       <div>

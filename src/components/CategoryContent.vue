@@ -1,7 +1,7 @@
 <template>
   <div class="fixed z-50 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-center justify-center min-h-screen px-4 text-center sm:block sm:p-0">
-      <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+      <div @click="close" class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
 
       <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
       <div class="inline-block align-bottom bg-white dark:bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle w-11/12 sm:w-7/12 md:w-7/12 lg:w-6/12 xl:w-5/12 2xl:w-5/12">
@@ -28,7 +28,7 @@
             <section class="flex justify-center items-center grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
               <div class="flex justify-center md:mx-20" v-for="(sound, index) in sounds" :key="index">
                 <div class="text-gray-500 text-base leading-relaxed dark:text-white" >
-                  <div class="relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-32 sm:w-40 h-44 sm:min-h-64">
+                  <div class="relative overflow-hidden bg-indigo-500 rounded-lg max-w-xs shadow-lg w-32 sm:w-40 h-44 sm:min-h-64 m-1">
 
                     <div class="flex flex-col text-white pt-10 w-full">
                       <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">

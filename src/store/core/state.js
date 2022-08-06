@@ -1,4 +1,4 @@
 export default {
   runningRequests: [],
-  darkMode: false,
+  darkMode: true,
 };
