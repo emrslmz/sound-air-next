@@ -104,10 +104,14 @@ export default {
     },
   },
 
-    methods: {
+  emits: ['update:running'],
+
+
+  methods: {
     ...mapActions('Sounds', ['getAudio', 'playSettings']),
 
       async playCategory() {
+        this.$emit('running', this.category);
         this.isLoading = true;
         await setTimeout(() => {
           this.isLoading = false;

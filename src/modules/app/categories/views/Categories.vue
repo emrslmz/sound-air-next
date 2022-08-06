@@ -20,7 +20,7 @@
 
                 <div class="flex flex-col gap-1" @click="toggleInviteModal(true, category)">
                     <!-- Image -->
-                    <div class="bg-purple-500 cursor-pointer">
+                    <div class="bg-purple-500 cursor-pointer hover:opacity-100" :class="running === category ? 'opacity-100' : 'opacity-50'">
                       <div class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 bg-cover bg-center h-72" :alt="category.name" :style="`background-image: url('${category.image}')`"></div>
                     </div>
 
@@ -56,7 +56,7 @@
 
 
       <div>
-        <category-content v-if="isCategoryContentVisible"  :category="selectedCategory" @close="toggleInviteModal(false)" />
+        <category-content v-if="isCategoryContentVisible"  :category="selectedCategory" @close="toggleInviteModal(false)" @running="setRunningCategory" />
       </div>
 
     </div>
@@ -76,6 +76,7 @@ export default {
     return {
       isCategoryContentVisible: false,
       selectedCategory: {},
+      running: {},
     };
   },
 
@@ -85,6 +86,10 @@ export default {
 
   methods: {
     ...mapActions('Sounds', ['getCategories', 'getAudios']),
+
+    setRunningCategory(category) {
+      this.running = category;
+    },
 
     toggleInviteModal(value, data) {
       this.isCategoryContentVisible = value;
