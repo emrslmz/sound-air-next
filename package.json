@@ -11,6 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@bugsnag/js": "^7.14.1",
+    "@bugsnag/plugin-vue": "^7.14.1",
+    "@capacitor/android": "^4.0.1",
+    "@capacitor/cli": "^4.0.1",
+    "@capacitor/core": "^4.0.1",
     "@popperjs/core": "^2.11.2",
     "@tailwindcss/forms": "^0.4.0",
     "@vitejs/plugin-vue": "^2.0.0",
@@ -23,13 +28,11 @@
     "vite": "^2.7.2",
     "vite-plugin-html": "^2.1.2",
     "vue": "^3.2.25",
+    "vue-meta": "^3.0.0-alpha.9",
     "vue-router": "^4.0.12",
     "vue-select": "^4.0.0-beta.2",
     "vue-tsc": "^0.29.8",
-    "vuex": "^4.0.2",
-    "vue-meta": "^3.0.0-alpha.9",
-    "@bugsnag/js": "^7.14.1",
-    "@bugsnag/plugin-vue": "^7.14.1"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.0.0",
