@@ -18,7 +18,7 @@
                 {{ getPrimary.name }}
               </p>
               <p class="text-lime-600 dark:text-lime-400 text-sm font-semibold uppercase" v-else>
-                ses yok
+                {{ $t("noSound") }}
               </p>
               <div class="text-sm font-semibold uppercase">
                 <span class="text-xs text-gray-700 dark:text-white uppercase font-medium cursor-pointer opacity-50 hover:opacity-100">
@@ -33,11 +33,11 @@
             </div>
             <h2 class="text-black dark:text-white text-base sm:text-xl lg:text-base xl:text-xl font-semibold truncate">
               <span v-if="getPrimary">{{ getPrimary.description }}</span>
-              <span v-else>Ses bulunmuyor</span>
+              <span v-else>{{ $t("noSound") }}</span>
             </h2>
             <p class="text-gray-500 dark:text-gray-400 text-xs font-medium">
               <span v-if="getPrimary">{{ getPrimary.id }}</span>
-              <span v-else>Ses bulunmuyor</span>
+              <span v-else>{{ $t("noSound") }}</span>
             </p>
           </div>
         </div>
@@ -105,12 +105,12 @@
 
           <div v-else-if="inThePlaylist.length === 1">
             <span class="text-lime-600 dark:text-lime-400 text-xs font-semibold uppercase">
-              Bir ses oynatılıyor..
+              {{ $t("aSoundIsPlaying") }}
             </span>
           </div>
           <div v-else>
             <span class="text-lime-600 dark:text-lime-400 text-xs font-semibold uppercase">
-              Ses bulunmuyor
+              {{ $t("noSound") }}
             </span>
           </div>
         </div>

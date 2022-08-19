@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white dark:bg-gray-900">
+<!--    <span class="text-white"> {{ $t("buildYourOwnOrTryOurs") }}</span>-->
     <nav class="relative z-20 select-none border-b border-gray-200 dark:border-white">
       <div class="container relative flex flex-wrap items-center justify-between h-24 mx-auto overflow-hidden font-medium md:overflow-visible lg:justify-center sm:px-4 md:px-2">
         <div class="flex items-center justify-start md:w-1/4 pr-4">
@@ -17,16 +18,18 @@
         </div>
         <div class="top-0 left-0 items-start hidden w-full h-full p-4 text-sm bg-opacity-50 md:items-center md:w-3/4 md:absolute lg:text-base md:bg-transparent md:p-0 md:relative md:flex">
         <!--WEB-DEVICES-->
-          <div class="flex-col w-full h-auto overflow-hidden bg-white rounded-lg md:bg-transparent md:overflow-visible md:rounded-none md:relative md:flex md:flex-row">
+          <div class="flex justify-between flex-col w-full h-auto overflow-hidden bg-white rounded-lg md:bg-transparent md:overflow-visible md:rounded-none md:relative md:flex md:flex-row">
 
-            <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
+            <div class="flex items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/4 md:mt-0 md:flex-row md:items-center">
               <div v-for="(item, index) in headerMenuItems" :key="index">
                 <router-link :to="{ name: item.name }" class="inline-block w-full py-2 mx-2 ml-6 font-medium text-left dark:text-white hover:text-indigo-600 dark:hover:text-indigo-600 md:ml-0 md:w-auto md:px-0 md:mx-2 lg:mx-3 md:text-center">{{ item.title}}</router-link>
               </div>
             </div>
 
+          <div class="flex justify-end items-center">
             <dark-mode />
-
+            <language />
+          </div>
           </div>
           <!--/WEB-DEVICES-->
 
@@ -48,6 +51,7 @@
         <div class="flex flex-wrap flex-col justify-center items-center py-3">
 
           <dark-mode />
+          <language />
 
           <router-link :to="{ name: item.name }" class="rounded-lg bg-indigo-700 text-gray-200 font-bold mx-16 py-2 my-2 text-center border-2 border-indigo-900 w-1/2" v-for="(item, index) in headerMenuItems" :key="index">{{ item.title }}</router-link>
 
@@ -61,10 +65,11 @@
 
 <script>
 import DarkMode from './DarkMode.vue';
+import Language from './Language.vue';
 
 export default {
   name: 'TheHeader',
-  components: { DarkMode },
+  components: { DarkMode, Language },
 
   data() {
     return {
@@ -72,7 +77,7 @@ export default {
 
       headerMenuItems: [
         {
-          title: 'Anasayfa',
+          title: 'AnaSayfa',
           name: 'Public',
         },
         {

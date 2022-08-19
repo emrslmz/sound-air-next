@@ -3,7 +3,7 @@
 
     <div class="pb-10">
       <h1 class="font-extrabold leading-10 tracking-tight text-center md:text-left text-white md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
-        <span class="inline md:block dark:text-white text-gray-900">Nasıl çalışır 🤡 </span>
+        <span class="inline md:block dark:text-white text-gray-900">{{ $t("howDoesItWork") }} 🤡 </span>
         <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"></span>
       </h1>
     </div>
@@ -13,7 +13,7 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-4">
             <div class="rounded-full w-4 h-4 border border-purple-500"></div>
-            <div class="text-md font-bold">SOUND AIR Nasıl kullanılır?</div>
+            <div class="text-md font-bold">{{ $t("soon") }}</div>
           </div>
           <div class="flex items-center space-x-4">
             <div class="cursor-pointer">
@@ -35,7 +35,7 @@
           <div>
             <small>#Last updated and effective date: July 31, 2022</small>
 
-            <p class="my-4">Pek bi zorluğu yok. Üst panelden <router-link :to="{ name: 'Sounds' }">Dinle</router-link> butonuna tıkla ve oradan dilediğin gibi müzikleri seç. Ardından seslerini ve yoğunluğunu ayarla. Artık hazırsın!</p>
+            <p class="my-4">{{ $t("itDoesntDifficulty") }} <router-link :to="{ name: 'Sounds' }"> {{ $t("listen") }}</router-link> {{ $t("clickButtonAndChooseMusicYouWantFromThere") }}</p>
           </div>
         </div>
       </div>

@@ -19,5 +19,13 @@ export default {
     ...mapActions('Core', ['changeTheme']),
   },
 
+  created() {
+    const localStorageLang = localStorage.getItem('lang');
+
+    if (!localStorageLang) {
+      localStorage.setItem('lang', 'tr');
+    }
+  },
+
 };
 </script>

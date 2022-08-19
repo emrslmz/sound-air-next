@@ -4,13 +4,13 @@
 
       <div class="pb-10">
         <h1 class="font-extrabold leading-10 tracking-tight text-center md:text-left text-gray-900 md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
-          <span class="inline md:block dark:text-gray-200">Çalma listesi oluştururken zorlanıyor musun? </span>
-          <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> kategorileri dene!</span> <span> 🤩</span>
+          <span class="inline md:block dark:text-gray-200">{{ $t("havingTroubleCreatingPlaylist") }}</span>
+          <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> {{ $t("tryTheCategories") }}</span> <span> 🤩</span>
         </h1>
       </div>
 
       <div class="flex flex-col m-auto p-auto  overflow-x-scroll hide-scroll-bar">
-        <h1 class="flex py-5 lg:px-10 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl dark:text-white">Senin için,</h1>
+        <h1 class="flex py-5 lg:px-10 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl dark:text-white">{{ $t("forYou") }},</h1>
 
         <div class="flex pb-10">
           <div class="flex flex-nowrap lg:ml-40 md:ml-20 ml-10" v-if="categories.length">
@@ -28,7 +28,7 @@
                     <button class="hover:text-purple-500 font-semibold text-left uppercase text-dark-900 dark:text-gray-200"> {{ category.name }} </button>
 
                     <!-- Viewers -->
-                    <button class="hover:text-purple-500 text-sm dark:text-gray-400 -mt-1 text-left"> {{ category.viewers }}B oynatma </button>
+                    <button class="hover:text-purple-500 text-sm dark:text-gray-400 -mt-1 text-left"> {{ category.viewers }} {{ $t("playback") }}</button>
 
                     <!-- Category Tags -->
                     <div class="flex flex-row flex-wrap gap-2">

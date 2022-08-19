@@ -3,8 +3,8 @@
 
     <div class="pb-10">
       <h1 class="font-extrabold leading-10 tracking-tight text-center md:text-left text-white md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
-        <span class="inline md:block dark:text-white text-gray-900">Hakkımızda </span>
-        <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> biz kimiz ki?</span>
+        <span class="inline md:block dark:text-white text-gray-900">{{ $t("aboutUs") }} </span>
+        <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> {{ $t("whoAreWe") }}</span>
       </h1>
     </div>
 
@@ -13,7 +13,7 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center space-x-4">
             <div class="rounded-full w-4 h-4 border border-purple-500"></div>
-            <div class="text-md font-bold">SOUND AIR Nedir?</div>
+            <div class="text-md font-bold"> {{ $t("whatIsSoundAir") }}</div>
           </div>
           <div class="flex items-center space-x-4">
             <div class="cursor-pointer">
@@ -35,8 +35,8 @@
           <div>
             <small>#Last updated and effective date: July 30, 2022</small>
 
-            <p class="my-4">Öncelikle burayı bulduysan ya geliştiricisindir, ya çok meraklısındır ya da sitede canın sıkılmıştır. Biz derken 1 kişiden bahsediyoruz. Benim kim olduğumu merak ediyorsan
-              <a href="https://emresolmaz.com.tr" target="_blank">buraya</a> basman yeterli :)</p>
+            <p class="my-4"> {{ $t("firstOfAllIfYouFoundThisPlaceYouAreEither") }}
+              <a href="https://emresolmaz.com.tr" target="_blank"> {{ $t("here") }}</a>  {{ $t("justPressIt") }}</p>
 
           </div>
         </div>

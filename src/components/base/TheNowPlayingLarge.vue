@@ -15,8 +15,8 @@
             <div class="flex flex-col px-2 w-full">
               <div class="flex justify-between">
                 <span class="text-xs text-gray-700 dark:text-white uppercase font-medium">
-                  <span v-if="getPrimary">Şu anda çalıyor</span>
-                  <span v-else>Çalma durduruldu</span>
+                  <span v-if="getPrimary">{{ $t("currentlyPlaying") }}</span>
+                  <span v-else>{{ $t("playStopped") }}</span>
                 </span>
                 <span class="text-xs text-gray-700 dark:text-white uppercase font-medium cursor-pointer opacity-50 hover:opacity-100">
                   <span v-if="cardStatus === 1" @click="toggleCardStatus(2)">
@@ -29,12 +29,12 @@
               </div>
               <span class="text-sm text-lime-500 capitalize font-semibold pt-1">
                   <span v-if="getPrimary">{{ getPrimary.name }}</span>
-                  <span v-else>Ses bulunmuyor</span>
+                  <span v-else>{{ $t("noSound") }}</span>
                 </span>
               <span class="text-xs text-gray-500 dark:text-white uppercase font-medium flex justify-between items-center">
                 <span v-if="getPrimary">{{ getPrimary.description }}</span>
-                <span v-else>Ses bulunmuyor</span>
-                <span v-if="inThePlaylist && cardStatus === 1 && inThePlaylist.length > 1" class="px-2 py-1 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">{{ inThePlaylist.length - 1  }} tane daha</span>
+                <span v-else>{{ $t("noSound") }}</span>
+                <span v-if="inThePlaylist && cardStatus === 1 && inThePlaylist.length > 1" class="px-2 py-1 text-xs font-medium leading-tight text-white bg-green-400 rounded-full">{{ inThePlaylist.length - 1  }} {{ $t("oneMore") }}</span>
               </span>
             </div>
           </div>
@@ -79,7 +79,7 @@
             <!--PLAYLIST-->
             <div class="flex flex-col p-5 max-h-56">
               <div class="border-b pb-1 flex justify-between items-center mb-2">
-                <span class=" text-base font-semibold uppercase text-gray-700 dark:text-white"> Oynatma Listesi</span>
+                <span class=" text-base font-semibold uppercase text-gray-700 dark:text-white"> {{ $t("soon") }}</span>
                 <i class="fa-solid fa-gears w-4 cursor-not-allowed text-gray-200 hover:text-gray-300"></i>
               </div>
 
@@ -100,12 +100,12 @@
 
               <div v-else-if="inThePlaylist.length === 1">
                 <span class="text-xs text-center text-gray-500 dark:text-gray-200  uppercase font-medium">
-                  Bir ses oynatılıyor..
+                  {{ $t("aSoundIsPlaying") }}
                 </span>
               </div>
               <div v-else>
                 <span class="text-xs text-center text-gray-500 dark:text-gray-200 uppercase font-medium">
-                  Ses bulunmuyor
+                  {{ $t("noSound") }}
                 </span>
               </div>
             </div>

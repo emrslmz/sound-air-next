@@ -4,8 +4,8 @@
     <div class="relative">
       <div class="py-10">
         <h1 class="font-extrabold leading-10 tracking-tight text-center sm:text-left text-gray-900 md:text-center sm:leading-none text-2xl sm:text-5xl md:text-6xl lg:text-5xl">
-          <span class="inline md:block dark:text-gray-200">İkonlara Tıklayarak </span>
-          <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> çalmaya başla!</span> <span> 😸</span>
+          <span class="inline md:block dark:text-gray-200">{{ $t("clickingOnTheIcons") }}</span>
+          <span class="relative py-3 text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 to-indigo-500 md:inline-block"> {{ $t("startPlaying") }}</span> <span> 😸</span>
         </h1>
       </div>
 

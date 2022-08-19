@@ -1,0 +1,72 @@
+{
+
+  "homePage" : "Anasayfa",
+  "buildYourOwnOrTryOurs": "Kendinize göre oluşturun veya bizimkileri deneyin",
+  "createYourOwnCategoryWith": "Özelleştirebileceğiniz çalma listeleriyle kendi kategorinizi oluşturun veya bizim oluşturduğumuz çalma listelerini deneyin",
+  "teachHow": "Nasıl yapıldığını öğret",
+  "downloadOurMobileApp": "Mobil uygulamamızı indirin",
+
+  "prepareToFocus": "Odaklanmaya Hazırlanın!",
+  "increaseYourProductivity": "Verimliliğinizi arttırın",
+  "areYouStudyingOr": "Ders mi çalışıyorsunuz? Veya önemli bir toplantıya mı hazırlanıyorsunuz?",
+  "tryNow": "Hemen Deneyin",
+  "freeNow": "ŞİMDİLİK ÜCRETSİZ $0.00",
+  "termsAndConditionsApply": "Şartlar ve koşullar geçerlidir.",
+  "tryItOnAllPlatforms": "Tüm platformlarda deneyin!",
+  "soon": "yakında",
+  "footerSignature": "Emre ᔕolmaz tarafından İstanbul'da tasarlandı. Tüm hakları Saklıdır 2022",
+  "aboutUs": "Hakkımızda",
+  "contactUs": "İletişime Geç",
+  "privacyPolicy": "Gizlilik Politikası",
+
+  "clickingOnTheIcons": "İkonlara Tıklayarak",
+  "startPlaying": "çalmaya başla!",
+  "loadingSounds": "Sesler yükleniyor...$",
+
+  "havingTroubleCreatingPlaylist": "Çalma listesi oluştururken zorlanıyor musun?",
+  "tryTheCategories": "kategorileri dene!",
+  "forYou": "Senin için",
+  "playback": "B oynatma",
+
+  "weatherEvents": "Hava Olayları",
+  "youCanFollowTheWeatherEvents": "Özelleştirerek bölgendeki hava olaylarını takip edebilirsin!",
+
+  "howDoesItWork": "Nasıl çalışır",
+  "howToUse": "SOUND AIR Nasıl kullanılır?",
+  "itDoesntDifficulty": "It doesn't have much difficulty. From the top panel",
+  "listen": "Dinle",
+  "clickButtonAndChooseMusicYouWantFromThere": "butonuna tıkla ve oradan dilediğin gibi müzikleri seç. Ardından seslerini ve yoğunluğunu ayarla. Artık hazırsın!",
+
+  "forYourQuestions": "Aklına takılan soruları, istek ve öneriler için",
+  "sent": "Gönder",
+  "or": "Ya da",
+  "youCanReachUsBySendingEmail": "Mail atarak, sosyal medya hesaplarımızla bize ulaşabilirsiniz",
+  "email": "E-posta",
+  "socialMedia": "Sosyal Medya",
+  "lastName": "Soy isim",
+  "name": "İsim",
+  "yourMessage": "Mesajın",
+
+  "donate": "Bavış",
+  "ifYouLikeOurApplication": "Uygulamamızı beğendiyseniz, bize katkı sağlamak istiyorsanız üstteki linklerden.. şaka şaka :D ",
+
+  "whoAreWe": " biz kimiz ki?",
+  "whatIsSoundAir": "SOUND AIR Nedir?",
+  "firstOfAllIfYouFoundThisPlaceYouAreEither": "Öncelikle burayı bulduysan ya geliştiricisindir, ya çok meraklısındır ya da sitede canın sıkılmıştır. Biz derken 1 kişiden bahsediyoruz. Benim kim olduğumu merak ediyorsan",
+  "here": "buraya",
+  "justPressIt": "basman yeterli :)",
+
+  "currentlyPlaying": "Şu anda çalıyor",
+  "playStopped": "Çalma durduruldu",
+  "noSound": "Ses bulunmuyor",
+  "oneMore": "tane daha",
+  "playlist": "Oynatma Listesi",
+  "aSoundIsPlaying": "Bir ses oynatılıyor..",
+
+  "loading": "Yükleniyor",
+
+  "thereAreTheFollowingSounds": "Bu kategoride şu sesler mevcut;",
+  "tapThePlayButtonAtTheBottom": "kategoriyi çalıştırmak için alttaki çal butonuna dokun!",
+  "play": "çal"
+
+}

@@ -32,16 +32,16 @@
           <div class="col-span-4">
 
             <h2 class="font-bold text-2xl text-white ml-10 mt-8">
-              Kendinize göre oluşturun veya bizimkileri deneyin
+              {{ $t("buildYourOwnOrTryOurs") }}
             </h2>
 
             <p class="font-light text-white text-sm ml-10 mt-5">
-              Özelleştirebileceğiniz çalma listeleriyle kendi kategorinizi oluşturun veya bizim oluşturduğumuz çalma listelerini deneyin
+              {{ $t("createYourOwnCategoryWith") }}
             </p>
 
             <div class="text-white font-semibold ml-10 mt-6 mb-8 group">
               <router-link :to="{ name: 'HowItsWorks' }">
-                Nasıl yapıldığını öğret
+                {{ $t("downloadOurMobileApp") }}
                 <svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6 group-hover:translate-x-2 transition delay-100 transition-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
